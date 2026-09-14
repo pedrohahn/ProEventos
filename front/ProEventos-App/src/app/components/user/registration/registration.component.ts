@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControlOptions, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ValidatorField } from '@app/helpers/ValidatorField';
+import { AccountService } from '@app/services/account.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-registration',
@@ -9,9 +12,13 @@ import { ValidatorField } from '@app/helpers/ValidatorField';
 })
 export class RegistrationComponent implements OnInit {
 
+  user = {} as any;
   form !: FormGroup;
 
-  constructor(public fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+              private accountService: AccountService,
+              private router: Router,
+              private toast: ToastrService) { }
 
   get f(): any {
     return this.form.controls;
@@ -24,7 +31,7 @@ export class RegistrationComponent implements OnInit {
     private validation(): void {
 
       const formOptions: AbstractControlOptions = {
-        validators: ValidatorField.MustMatch('senha', 'confirmeSenha')
+        validators: ValidatorField.MustMatch('password', 'confirmePassword')
       };
 
 
@@ -35,11 +42,26 @@ export class RegistrationComponent implements OnInit {
           [Validators.required, Validators.email]
         ],
         username: ['', Validators.required],
-        senha: ['', 
-          [Validators.required, Validators.minLength(6)]
+        password: ['', 
+          [Validators.required, Validators.minLength(4)]
         ],
-        confirmeSenha: ['', Validators.required]
+        confirmePassword: ['', Validators.required]
       }, formOptions);
     }
+
+    register(): void {
+      this.user = { ...this.form.value };
+      this.accountService.register(this.user).subscribe({
+        next: () => {
+          this.router.navigateByUrl('/dashboard');
+          this.toast.success('Cadastro realizado com sucesso!');
+        },
+        error: (error : any) => {
+          this.toast.error(error.error);
+        }
+      });
+   
+    }
+
 
 }

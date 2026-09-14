@@ -7,7 +7,7 @@ namespace ProEventos.Application.Dtos
 {
     public class UserUpdateDto
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         public string Titulo { get; set; }
 

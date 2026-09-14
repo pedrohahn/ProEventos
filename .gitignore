@@ -449,6 +449,7 @@ $RECYCLE.BIN/
 
 # compiled output
 /dist
+/front/ProEventos-App/dist/
 /tmp
 /out-tsc
 # Only exists if Bazel was run
