@@ -458,6 +458,8 @@ $RECYCLE.BIN/
 # dependencies
 /node_modules
 
+resumo.md
+
 # profiling files
 chrome-profiler-events*.json
 
