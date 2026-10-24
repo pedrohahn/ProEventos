@@ -20,7 +20,7 @@ export class EventoListaComponent implements OnInit {
   modalRef?: BsModalRef;
   public eventos: Evento[] = [];
   public eventoId = 0;
-  public pagination = { totalItems: 0, itemsPerPage: 3, currentPage: 1 } as Pagination;
+  public pagination = { } as Pagination;
 
   public larguraImagem = 150;
   public margemImagem = 2;
@@ -66,6 +66,7 @@ export class EventoListaComponent implements OnInit {
   ) { }
 
   public ngOnInit(): void {
+    this.pagination = {totalItems: 0, itemsPerPage: 3, currentPage: 1 } as Pagination;
     this.carregarEventos();
   }
 

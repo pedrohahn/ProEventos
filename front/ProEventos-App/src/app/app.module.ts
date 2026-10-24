@@ -9,9 +9,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EventosComponent } from './components/eventos/eventos.component';
 import { PalestrantesComponent } from './components/palestrantes/palestrantes.component';
+import { PalestranteListaComponent } from './components/palestrantes/palestrante-lista/palestrante-lista.component';
+import { PalestranteDetalheComponent } from './components/palestrantes/palestrante-detalhe/palestrante-detalhe.component';
 import { ContatosComponent } from './components/contatos/contatos.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PerfilComponent } from './components/user/perfil/perfil.component';
+import { PerfilDetalheComponent } from './components/user/perfil/perfil-detalhe/perfil-detalhe.component';
+import { RedesSociaisComponent } from './components/redesSociais/redesSociais.component';
 import { EventoDetalheComponent } from './components/eventos/evento-detalhe/evento-detalhe.component';
 
 import { CollapseModule } from 'ngx-bootstrap/collapse';
@@ -23,6 +27,7 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { NgxCurrencyModule } from 'ngx-currency';
 import { defineLocale } from 'ngx-bootstrap/chronos';
 import { ptBrLocale } from 'ngx-bootstrap/locale';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
@@ -50,9 +55,13 @@ defineLocale('pt-br', ptBrLocale);
     AppComponent,
     EventosComponent,
     PalestrantesComponent,
+    PalestranteListaComponent,
+    PalestranteDetalheComponent,
     ContatosComponent,
     DashboardComponent,
     PerfilComponent,
+    PerfilDetalheComponent,
+    RedesSociaisComponent,
     NavComponent,
     TituloComponent,
     DateTimeFormatPipe,
@@ -75,6 +84,7 @@ defineLocale('pt-br', ptBrLocale);
     BsDropdownModule.forRoot(),
     BsDatepickerModule.forRoot(),
     PaginationModule.forRoot(),
+    TabsModule.forRoot(),
     ModalModule.forRoot(),
     ToastrModule.forRoot({
       timeOut: 3000,

@@ -44,7 +44,6 @@ export class AccountService {
     );
   }
 
-
   public logout(): void {
     localStorage.removeItem('user');
     this.currentUserSource.next(null);
@@ -65,5 +64,14 @@ export class AccountService {
         }
       }),
     );
+  }
+
+  postUpload(file: File): Observable<UserUpdate> {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    return this.http
+      .post<UserUpdate>(`${this.baseUrl}upload-image`, formData)
+      .pipe(take(1));
   }
 }
